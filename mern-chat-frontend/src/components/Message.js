@@ -10,22 +10,23 @@ function Message() {
     }
 
     // To prevent non user to access chat
-    // const user = useSelector((state) => state.user);////////////////////////////////////
+    const user = useSelector((state) => state.user);
     return (
     <>
         <div className='messages-output'> 
-        {/* {!user && <div className='alert alert-danger'>Please signIn</div>} */}  
+        {!user && <div className='alert alert-danger'>Please signIn</div>}  
         </div>
+        {user && (
         <Form onSubmit={handleSubmit}>
 
             <Row> 
                 <Col md={11}>
                     <Form.Group>
-                        <Form.Control type="text" placeholder='Type message here'></Form.Control>
+                        <Form.Control type="text" placeholder='Type message here' disabled={!user}></Form.Control>
                     </Form.Group>
                 </Col>
                 <Col md={1}>
-                    <Button variant='primary' type="submit" style={{ width: "100%", backgroundColor: "blue" }}>
+                    <Button variant='primary' type="submit" style={{ width: "100%", backgroundColor: "blue" }} disabled={!user}>
                         <i className="fas fa-paper-plane"></i>
                     </Button>
 
@@ -33,6 +34,7 @@ function Message() {
             </Row>
 
         </Form>
+        )}
     </>
     );
 
