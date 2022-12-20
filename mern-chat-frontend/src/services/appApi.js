@@ -1,4 +1,3 @@
-import { buildCacheLifecycleHandler } from '@reduxjs/toolkit/dist/query/core/buildMiddleware/cacheLifecycle';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 //define a service user a base url
@@ -20,9 +19,9 @@ const appApi = createApi({
         }),
 
         //login
-        login: builder.mutation({
+        loginUser: builder.mutation({
             query: (user) => ({
-                url: "/user/login",
+                url: '/user/login',
                 method: "POST",
                 body: user,
             }),
@@ -30,7 +29,7 @@ const appApi = createApi({
 
 
         //logout
-        logout: builder.mutation({
+        logoutUser: builder.mutation({
             query: (payload) => ({
                 url: "/logout",
                 method: "DELETE",
@@ -44,6 +43,6 @@ const appApi = createApi({
 });
 
 
-export const { useSignupUserMutation, useLoginUserMutation, useLogoutUserMutation } = appApi
+export const { useSignupUserMutation, useLoginUserMutation, useLogoutUserMutation } = appApi;
 
 export default appApi;

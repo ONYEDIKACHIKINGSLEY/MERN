@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Form, Row, Col } from "react-bootstrap";
+import { useSelector } from 'react-redux';
 import "./Message.css";
 
 function Message() {
@@ -7,9 +8,14 @@ function Message() {
         e.preventDefault();
 
     }
+
+    // To prevent non user to access chat
+    // const user = useSelector((state) => state.user);////////////////////////////////////
     return (
     <>
-        <div className='messages-output'> </div>
+        <div className='messages-output'> 
+        {/* {!user && <div className='alert alert-danger'>Please signIn</div>} */}  
+        </div>
         <Form onSubmit={handleSubmit}>
 
             <Row> 

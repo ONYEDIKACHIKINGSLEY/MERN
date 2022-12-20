@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Container, Col, Form, Row, Button } from 'react-bootstrap';
-import {Link} from "react-router-dom";
+// import { useLoginUserMutation } from '../services/appApi';//////////////////////////////////
+import { Link, useNavigate} from "react-router-dom";
 import "./Login.css";
 
     
@@ -8,9 +9,20 @@ import "./Login.css";
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    // const [loginUser, { isLoading, error}] = useLoginUserMutation();///////////////////////////////////////
 
     function handleLogin(e){
         e.preventDefault();
+
+        //login user
+        // loginUser({email, password}).then(({data}) => {///////////////////////////
+            // if(data) {//////////////////////////
+                //socket section/////////////////////////
+                // To navigate to the chat///////////////////////
+                navigate("/chat");
+            // }
+        // })
     }
 
     return (
@@ -37,7 +49,7 @@ function Login() {
                     </Button>
                     <div className='new'>
                         <p className='text center'>
-                            Don't have an account? <Link to="/signup">Signup</Link>
+                            Don't have an account? <Link to="/Signup">Signup</Link>
                         </p>
                     </div>
                 </Form>
