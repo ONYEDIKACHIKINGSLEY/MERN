@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from "react-bootstrap";
 import Sidebar from '../components/Sidebar';
-import Message from '../components/Message';
+import Message from '../components/MessageF';
 
 function Chat() {
     return (

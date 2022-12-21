@@ -38,7 +38,7 @@ const UserSchema = new mongoose.Schema({
 }, {minimize: false});
 
 //hide password before user is saved
-UserSchema.pre('save',function(next) {
+UserSchema.pre('save', function(next) {
     const user = this;
     if(!user.isModified('password')) return next();
      bcrypt.genSalt(10, function(err, salt){
@@ -48,6 +48,7 @@ UserSchema.pre('save',function(next) {
             if(err) return next(err);
 
             user.password = hash
+            next();
 
         })
 
