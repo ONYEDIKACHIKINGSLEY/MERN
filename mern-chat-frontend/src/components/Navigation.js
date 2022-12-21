@@ -34,7 +34,7 @@ const[logoutUser] = useLogoutUserMutation();
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        {!user && (     //prevent 
+                        {user && (     //prevent 
                         <LinkContainer to="/login">
                         <Nav.Link>Login</Nav.Link>
                         </LinkContainer>

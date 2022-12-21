@@ -63,9 +63,10 @@ function sortRoomMessagesByDate(messages) {
     })
 
 
-    socket.on('join-room', async(room)=> {
-        socket.join(room);
-        let roomMessages = await getLastMessagesFromRoom(room);
+    socket.on('join-room', async(newRoom, previousRoom)=> {
+        socket.join(newRoom);
+        socket.leave(previousRoom);
+        let roomMessages = await getLastMessagesFromRoom(newRoom);
 
         //To get room messages
         roomMessages = sortRoomMessagesByDate(roomMessages);
