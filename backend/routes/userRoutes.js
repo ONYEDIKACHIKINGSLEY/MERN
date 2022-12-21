@@ -1,16 +1,15 @@
 const router = require('express').Router();
-const { json } = require('body-parser');
 const User = require('../models/User');
 
 //creating user
-router.post('/', async(req, res) => {
+router.post('/', async(req, res)=> {
     try {
         const {name, email, password, picture} = req.body;
         console.log(req.body);
         const user = await User.create({name, email, password, picture});
         res.status(201).json(user);
 
-    } catch (e) {
+    } catch(e) {
         let msg;
         if(e.code == 11000) {
             msg = "User already exists"
@@ -26,7 +25,7 @@ router.post('/', async(req, res) => {
 
 //login user
 
-router.post('/login', async(req, res)=> {
+router.post ('/login', async(req, res)=> {
     try {
         const {email, password} = req.body;
         const user = await User.findByCredentials(email, password);

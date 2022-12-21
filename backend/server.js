@@ -4,15 +4,12 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 const userRoutes = require('./routes/userRoutes')
-const User = require('./models/User')
-
-
-const rooms = ['general', 'tech', 'finance', 'crypto'];
+const User = require('./models/User');
+const rooms = ['general', 'software development', 'content creation', 'security', 'employability'];
 const cors = require('cors');
 const { Socket } = require('dgram');
 const { Router } = require('express');
 const Message = require('./models/Message');
-
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -75,7 +72,40 @@ function sortRoomMessagesByDate(messages) {
         socket.emit('room-messages', roomMessages)
 
     })
+    //To send messages
+    socket.on('message-room', async(room, content, sender, time, date) => {
+        console.log('new message', content);
+        const newMessage = await Message.create({content, from: sender, time, date, to: room});
+        let roomMessages = await  getLastMessagesFromRoom(room);
+        roomMessages = sortRoomMessagesByDate(roomMessages);
+        //To send message to room
+        io.to(room).emit('room-messages', roomMessages);
+        socket.broadcast.emit('notifications', room)
+    })
+//logout
+    app.delete('/logout', async(req, res) => {
+        try {
+            const {_id, newMessage} = req.body;
+            const user = await User.findByID(_id);
+            user.status = "offline";
+            user.newMessages = newMessages;
+            await user.save();
+            const members = await User.find();
+            socket.broadcast.emit('new-user', members);
+            res.status(200).send();
+        } catch (e) {
+            console.log(e);
+            res.status(400).send();
+            
+        }
+    })
  })
+
+
+
+
+
+
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
     console.log("Connected to database!");
 server.listen(PORT, ()=> {

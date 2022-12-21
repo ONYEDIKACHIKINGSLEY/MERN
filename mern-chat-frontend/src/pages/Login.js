@@ -12,13 +12,13 @@ function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const {socket} = useContext(AppContext);
-    const [loginUser, { isLoading, error}] = useLoginUserMutation();///////////////////////////////////////
+    const [loginUser, { isLoading, error}] = useLoginUserMutation();
 
     function handleLogin(e){
         e.preventDefault();
 
         //login user
-        loginUser({email, password}).then(({data}) => {///////////////////////////
+        loginUser({ email, password }).then(({data}) => {
             if(data) {
                 //socket section
 
