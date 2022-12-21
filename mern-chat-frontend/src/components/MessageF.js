@@ -49,7 +49,7 @@ function MessageF() {
         <div className='messages-output'> 
         {!user && <div className='alert alert-danger'>Please signIn</div>}  
 
-        {!user &&   ///////////revert
+        {user &&   
          messages.map(({_id: date, messagesByDate}, idx) => (
             <div key={idx}>
                 <p className='alert alert-info text-center message-date-indicator'>{date}</p>
@@ -61,17 +61,17 @@ function MessageF() {
             </div>
         ))}
         </div>
-        {!user && (  //////////////////////////revert
+        {user && (  
         <Form onSubmit={handleSubmit}>
 
             <Row> 
                 <Col md={11}>
                     <Form.Group>
-                        <Form.Control type="text" placeholder='Type message here'  value={message} onChange={(e) => setMessage(e.target.value)}></Form.Control> 
+                        <Form.Control type="text" placeholder='Type message here' disabled={!user} value={message} onChange={(e) => setMessage(e.target.value)}></Form.Control> 
                     </Form.Group>
                 </Col>
                 <Col md={1}>
-                    <Button variant='primary' type="submit" style={{ width: "100%", backgroundColor: "blue" }} >
+                    <Button variant='primary' type="submit"  style={{ width: "100%", backgroundColor: "blue" }} disabled={!user} >
                         <i className="fas fa-paper-plane"></i>
                     </Button>
 

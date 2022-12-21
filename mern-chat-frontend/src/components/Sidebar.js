@@ -11,7 +11,7 @@ function Sidebar() {
         setCurrentRoom, privateMemberMsg, setPrivateMemberMsg, } = useContext(AppContext);
 
     useEffect(() => {
-        if (!user) {  /////////////////////////////revert
+        if (user) {  
             setCurrentRoom("general");
             getRooms();
             socket.emit("join-room", "general");
@@ -28,9 +28,9 @@ function Sidebar() {
             .then((data) => setRooms(data));
     };
 
-    // if(!user) {
-    // return <></>
-    // }
+    if(!user) {
+    return <></>
+    }
     return (<>
         <h2>Available Rooms</h2>
         <ListGroup>

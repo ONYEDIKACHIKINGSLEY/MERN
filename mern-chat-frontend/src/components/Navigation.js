@@ -34,7 +34,7 @@ const[logoutUser] = useLogoutUserMutation();
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        {user && (     //prevent /////////revert
+                        {!user && (     //prevent 
                         <LinkContainer to="/login">
                         <Nav.Link>Login</Nav.Link>
                         </LinkContainer>
@@ -42,14 +42,13 @@ const[logoutUser] = useLogoutUserMutation();
                         <LinkContainer to="/chat">
                         <Nav.Link>Chat</Nav.Link>
                         </LinkContainer>
-                        {!user && (    
-                        <NavDropdown 
-                        // title={
-                        //     <>
-                        //     <img src={user.picture} style={{width: 30, height:30, marginRight: 10, objectFit: 'cover', borderRadius: "50%"}} />
-                        //     {user.name}
-                        //     </>
-                        // }
+                        {user && (    
+                        <NavDropdown title={
+                            <>
+                            <img src={user.picture} style={{width: 30, height:30, marginRight: 10, objectFit: 'cover', borderRadius: "50%"}} />
+                            {user.name}
+                            </>
+                        }
                         
                         
                         id="basic-nav-dropdown">
