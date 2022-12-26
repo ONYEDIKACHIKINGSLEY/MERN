@@ -64,7 +64,7 @@ async function uploadImage(){
         signupUser({name, email, password, picture: url}).then(({data}) => {
             if (data) {
                 console.log(data);
-        navigate ("/chat") //To navigate the user
+        navigate ( "/chat" ) //To navigate the user
             }
         })
     }
