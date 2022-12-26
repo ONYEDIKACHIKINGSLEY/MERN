@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Container, Col, Form, Row, Button } from 'react-bootstrap';
+import { Container, Col, Form, Row, Button, Spinner } from 'react-bootstrap';
 import { useLoginUserMutation } from '../services/appApi';
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -37,6 +37,7 @@ function Login() {
                 <Col md={7} className="d-flex align-items-center justify-content-center flex-direction-column">
                     <Form style={{ width: "80%", maxwidth: 500 }} onSubmit={handleLogin}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
+                            {error && <p className="alert alert-danger">{error.data}</p>}
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} value={email} required />
                             <Form.Text className="text-muted">
@@ -49,7 +50,7 @@ function Login() {
                             <Form.Control type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} value={password} required />
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                            Login
+                            { isLoading ? <Spinner animation='grow'/> : "Login"}
                         </Button>
                         <div className='new'>
                             <p className='text center'>

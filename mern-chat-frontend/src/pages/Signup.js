@@ -64,7 +64,7 @@ async function uploadImage(){
         signupUser({name, email, password, picture: url}).then(({data}) => {
             if (data) {
                 console.log(data);
-        navigate ("/chat") //To navigate the user
+        navigate ( "/chat" ) //To navigate the user
             }
         })
     }
@@ -85,6 +85,7 @@ async function uploadImage(){
                             </label>
                             <input type="file" id="image-upload" hidden accept="image/png, image/jpeg" onChange={validatePic} />
                         </div>
+                        {error && <p className='alert alert-danger'>{error.data}</p>}
 
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label>Name</Form.Label>
@@ -104,7 +105,7 @@ async function uploadImage(){
                             <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}  value={password}/>
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                            {uploadingImg ? 'loading...': 'Create account'}
+                            {uploadingImg || isLoading ? 'loading...': 'Create account'}
                         </Button>
                         <div className='new'>
                             <p className='text center'>

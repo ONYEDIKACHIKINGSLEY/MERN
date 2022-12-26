@@ -1,0 +1,70 @@
+.messages-output {
+    border: 1px solid lightgray;
+    height: 80vh;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3TkJ52wKyF4wZcAZPdS2UYRZpf-ltAxpEPw&usqp=CAU);
+    background-repeat: no-repeat;
+    background-position: center;
+    
+
+}
+
+.message-inner {
+    margin-left: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    min-width: 200px;
+    max-width: 90%;
+    text-align: left;
+    min-height: 80px;
+    font: 400 1em, sans-serif;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: aquamarine;
+}
+
+.incoming-message .message-inner {
+    background-color: blanchedalmond;
+}
+
+.message-date-indicator {
+    width: 150px;
+    margin: 0 auto;
+
+}
+.incoming-message {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.message-timestamp-left {
+    font-size: 0.85em;
+    font-weight: 300;
+    margin-top: 10px;
+
+}
+
+.message-sender {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.conversation-info {
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+    height: 100px;
+
+}
+
+.conversation-profile-picture {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin: 10px auto;
+    margin-bottom: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
